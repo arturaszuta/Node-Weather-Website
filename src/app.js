@@ -55,7 +55,7 @@ app.get('/weather', (req, res) => {
             });
         } 
     
-        forecast(lat, long, (error, {temp, rain, daily}) => {
+        forecast(lat, long, (error, {temp, rain, daily, low, high}) => {
             if(error) {
                 return res.send({
                     error: error
@@ -67,7 +67,7 @@ app.get('/weather', (req, res) => {
                 daily: daily,
                 temperature: temp,
                 chanceOfrain: rain,
-                forecast: `${daily} Right now it is ${temp}C outside with a ${rain}% chance of rain.`
+                forecast: `${daily} Right now it is ${temp}C outside with a ${rain}% chance of rain. The low temperature of the day will be ${low}C and the high will be ${high}C.`
             })
           });
     });
